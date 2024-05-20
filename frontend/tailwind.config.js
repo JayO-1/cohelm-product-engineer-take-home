@@ -21,6 +21,11 @@ module.exports = {
 					900: "#000000",
 					950: "#000000"
 				},
+				sidebar: {
+					active: "#777164",
+					background: "#faf7f7",
+					iconColor: "#777164",
+				},
 			}
 		},
 	},
