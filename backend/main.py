@@ -27,7 +27,7 @@ class Case(BaseModel):
 
 id_ = 0
 cases = {
-    # case_{id}: Case(id="case_{id}", created_at=datetime.now(), status=Status.SUBMITTED),
+    # case_{id_}: Case(id="case_{id_}", created_at=datetime.now(), status=Status.SUBMITTED),
 }
 
 @app.get("/")

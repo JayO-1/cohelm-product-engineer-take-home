@@ -29,7 +29,6 @@ export default function CreateRoot() {
 		})
 		.then(data => {
 			console.log('data', data);
-			toast.success(`Created case with id ${data.case_id}`)
 			setCaseId(data.case_id)
 		})
 		.catch(error => {
@@ -43,9 +42,7 @@ export default function CreateRoot() {
 			return;
 		}
 
-		setInterval(() => {
-			router.push(`/dashboard/case/${caseId}`)
-		}, 2000);
+		router.push(`/dashboard/case/${caseId}`)
 	}, [caseId])
 
 	const buttonClasses = classNames(
@@ -67,7 +64,7 @@ export default function CreateRoot() {
 				<button
 					className={buttonClasses}
 					onClick={handleContinue}
-					disabled={medicalRecord === null || guidelinesFile === null || caseId === null}
+					disabled={medicalRecord === null || guidelinesFile === null}
 				>
 					Continue
 				</button>
