@@ -52,8 +52,8 @@ export default function MedicalRecordUpload() {
                             <FaCheck />
                             <span>Medical Record Uploaded</span>
                         </span>
-                        <span className="font-light">
-                            <span className="text-blue-500">Click to change file</span> 
+                        <span className="font-light text-blue-500">
+                            Click to change file
                         </span>
                     </span>
                 )}
