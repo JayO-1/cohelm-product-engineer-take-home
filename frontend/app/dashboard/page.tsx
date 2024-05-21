@@ -1,32 +1,49 @@
-"use client";
-
-import GuidelinesUpload from "@/components/guidelines-upload";
-import MedicalRecordUpload from "@/components/medical-record-upload";
-import { useRouter } from "next/navigation";
-
-export const revalidate = 0;
+import React from 'react';
+import Button from "@/components/dashboard/button";
+import Image from 'next/image';
 
 export default async function DashboardRoot() {
-	const router = useRouter();
-	const CASE_ID = "case_891a_6fbl_87d1_4326";
-
-	const handleContinue = () => {
-		router.push(`/dashboard/case/${CASE_ID}`)
-	}
+	
+	const priorAuthRecords = [
+		{
+			id: "1",
+			createdAt: "Time",
+			status: "Submitted",
+		},
+		{
+			id: "2",
+			createdAt: "Time",
+			status: "Submitted",
+		},
+		{
+			id: "3",
+			createdAt: "Time",
+			status: "Submitted",
+		},
+	  ];;
 
 	return (
 		<div className="w-full flex flex-col justify-center items-center h-screen">
-			<div className="w-full flex flex-row gap-2 items-center">
-				<MedicalRecordUpload />
-				<GuidelinesUpload />
-			</div>
-			<div className="w-full py-4 flex flex-row justify-center">
-				<button
-					className="bg-green-600 font-medium text-white py-2 px-4 rounded"
-					onClick={handleContinue}
-				>
-					Continue
-				</button>
+			<div className="w-[75%] h-full flex flex-col justify-center items-center">
+				<div className="w-full flex justify-between items-center">
+					<h1 className="text-3xl font-bold text-gray-800 overflow-hidden">Prior Auth Records</h1>
+					<Button href="/dashboard/create" color="blue">
+						Create Record
+					</Button>
+				</div>
+				<div className="flex flex-col justify-center items-center gap-4 relative w-full h-[75%] bg-transparent border-2 border-gray-300 p-5 m-5 self-center">
+					<Image
+						src="/no_records.svg"
+						width={200}
+						height={200}
+					/>
+					<p className="">
+						<strong>No prior auth records found</strong>
+					</p>
+					<p>
+						<i>You can create a new prior auth record by clicking 'Create Record'</i>
+					</p>
+				</div>
 			</div>
 		</div>
 	)
