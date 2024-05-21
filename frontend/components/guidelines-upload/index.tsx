@@ -52,8 +52,8 @@ export default function GuidelinesUpload() {
                             <FaCheck />
                             <span>Guidelines File Uploaded</span>
                         </span>
-                        <span className="font-light">
-                            <span className="text-blue-500">Click to change file</span> 
+                        <span className="font-light text-blue-500">
+                            Click to change file
                         </span>
                     </span>
                 )}
