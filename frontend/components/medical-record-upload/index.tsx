@@ -44,7 +44,12 @@ export default function MedicalRecordUpload() {
                     </button> 
                 )}
                 {isUploading && medicalRecord == null && (
-                    <Spinner />
+                    <span className="flex flex-col justify-center items-center gap-4">
+                        <Spinner />
+                        <span className="font-light">
+                            Uploading file...
+                        </span>
+                    </span>
                 )}
                 {medicalRecord !== null && (
                     <span className="flex flex-col justify-center items-center gap-4">

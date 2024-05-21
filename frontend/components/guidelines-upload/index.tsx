@@ -49,7 +49,12 @@ export default function GuidelinesUpload() {
                     </button> 
                 )}
                 {isUploading && guidelinesFile === null && (
-                    <Spinner />
+                    <span className="flex flex-col justify-center items-center gap-4">
+                        <Spinner />
+                        <span className="font-light">
+                            Uploading file...
+                        </span>
+                    </span>
                 )}
                 {guidelinesFile !== null && (
                     <span className="flex flex-col justify-center items-center gap-4">
