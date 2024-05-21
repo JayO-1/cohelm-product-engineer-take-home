@@ -15,7 +15,6 @@ export default function CustomButton({ children, href, color }) {
         blue: 'from-blue-600 to-blue-400',
         red: 'from-red-600 to-red-400',
         green: 'from-green-600 to-green-400',
-        // add more colors as needed
     };
 
 	return (

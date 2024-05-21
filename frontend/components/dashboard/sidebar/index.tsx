@@ -27,7 +27,7 @@ const items: ISidebarItem[] = [
     icon: MdHome,
   },
   {
-    name: "Prior Auth",
+    name: "Prior Auth Records",
     path: "/dashboard",
     icon: MdDescription,
   },

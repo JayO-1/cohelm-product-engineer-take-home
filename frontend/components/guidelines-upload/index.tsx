@@ -1,8 +1,9 @@
 "use client";
 
-import { useDashboard} from "@/context/dashboard-context";
+import { useDashboard } from "@/context/dashboard-context";
 import classNames from "classnames";
 import { FaCheck } from "react-icons/fa";
+import { MdOutlineFileUpload } from "react-icons/md";
 
 export default function GuidelinesUpload() {
     const { guidelinesFile, setGuidelinesFile } = useDashboard();
@@ -12,22 +13,27 @@ export default function GuidelinesUpload() {
     }
 
     return(
-        <div className="w-1/2 h-64 border border-4 border-gray-200 border-dashed rounded flex flex-row items-center justify-center">
-            <button
-                className={classNames(
-                    "text-white font-medium py-2 px-4 rounded border border-2",
-                    guidelinesFile === null ? "bg-orange-500 border-orange-500" : "border-transparent text-green-600" 
+        <div className="w-full h-64 flex flex-col items-center justify-center gap-4">
+            <h2 className="self-start font-medium text-xl">Upload Guidelines</h2>
+            <div className="w-full h-full bg-gray-100 rounded-3xl border-4 border-black-500 border-dashed flex flex-row items-center justify-center">
+                {guidelinesFile === null && (
+                    <button
+                        className="flex flex-col items-center justify-center gap-4 font-medium text-lg"
+                        onClick={handleClick}
+                    >
+                        <MdOutlineFileUpload className="text-5xl text-blue-500" />
+                        <span className="font-light">
+                            Drag and drop or <span className="text-blue-500">browse</span> your files 
+                        </span>
+                    </button> 
                 )}
-                onClick={handleClick}
-            >
-                {guidelinesFile === null && (<span>Simulate Guidelines Upload</span>)}
                 {guidelinesFile !== null && (
                     <span className="text-green-600 flex flex-row gap-1 items-center">
                         <FaCheck />
                         <span>Guidelines File Uploaded</span>
                     </span>
                 )}
-            </button>
+            </div>
         </div>
     )
 }
