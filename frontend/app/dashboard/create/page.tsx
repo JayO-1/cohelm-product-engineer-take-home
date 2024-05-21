@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export const revalidate = 0;
 
-export default async function CreateRoot() {
+export default function CreateRoot() {
 	const { medicalRecord, setMedicalRecord, guidelinesFile, setGuidelinesFile } = useDashboard(); 
 	const router = useRouter();
 	const CASE_ID = "case_891a_6fbl_87d1_4326";
