@@ -25,7 +25,7 @@ class Case(BaseModel):
     created_at: datetime
     status: str
 
-id = 0
+id_ = 0
 cases = {
     # case_{id}: Case(id="case_{id}", created_at=datetime.now(), status=Status.SUBMITTED),
 }
@@ -42,15 +42,16 @@ def query_case_by_id(case_id: str):
     return cases[case_id]
 
 @app.get("/cases")
-def get_all_cases() -> dict[str, dict[int, Case]]:
+def get_all_cases() -> dict[str, dict[str, Case]]:
     return { "cases": cases }
 
 @app.post("/cases")
 def create_case() -> dict[str, str]:
-    case_id = f"case_{id}"
+    global id_
+    case_id = f"case_{id_}"
     cases[case_id] = Case(id = case_id, created_at=datetime.now(), status=Status.SUBMITTED)
     response = { "case_id": case_id }
-    id += 1
+    id_ += 1
     
     return response
     
