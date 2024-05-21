@@ -9,30 +9,30 @@ import Spinner from "@/components/dashboard/spinner";
 
 export default function MedicalRecordUpload() {
     const { medicalRecord, setMedicalRecord } = useDashboard();
-    const [isLoading, setIsLoading] = useState(false);
+    const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
-        if (!isLoading) {
+        if (!isUploading) {
             return;
         }
 
         const timeoutId = setTimeout(() => {
-            setIsLoading(false);
+            setIsUploading(false);
             setMedicalRecord({ url: "/assets/medical-record.pdf" });
         }, 3000);
 
         return () => clearTimeout(timeoutId);
-    }, [isLoading]);
+    }, [isUploading]);
 
     const handleClick = () => {
-        setIsLoading(true);
+        setIsUploading(true);
     }
 
     return(
         <div className="w-full h-64 flex flex-col items-center justify-center gap-4">
             <h2 className="self-start font-medium text-xl">Upload Medical Record</h2>
             <div className="w-full h-full bg-gray-100 rounded-3xl border-4 border-black-500 border-dashed flex flex-row items-center justify-center">
-                {!isLoading && medicalRecord === null && (
+                {!isUploading && medicalRecord === null && (
                     <button
                         className="flex flex-col items-center justify-center gap-4 font-medium text-lg"
                         onClick={handleClick}
@@ -43,7 +43,7 @@ export default function MedicalRecordUpload() {
                         </span>
                     </button> 
                 )}
-                {isLoading && (
+                {isUploading && medicalRecord == null && (
                     <Spinner />
                 )}
                 {medicalRecord !== null && (

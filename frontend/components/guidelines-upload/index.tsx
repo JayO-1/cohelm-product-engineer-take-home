@@ -48,7 +48,7 @@ export default function GuidelinesUpload() {
                         </span>
                     </button> 
                 )}
-                {isUploading && (
+                {isUploading && guidelinesFile === null && (
                     <Spinner />
                 )}
                 {guidelinesFile !== null && (
