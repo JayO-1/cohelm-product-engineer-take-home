@@ -16,7 +16,7 @@ export default async function CreateRoot() {
 
 	return (
 		<div className="w-full flex flex-col justify-center items-center h-screen">
-			<div className="w-full flex flex-row gap-2 items-center">
+			<div className="w-full flex flex-row gap-2 justify-between items-center">
 				<MedicalRecordUpload />
 				<GuidelinesUpload />
 			</div>
