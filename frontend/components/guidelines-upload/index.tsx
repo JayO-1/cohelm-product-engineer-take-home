@@ -6,33 +6,38 @@ import { useState, useEffect } from 'react';
 import { FaCheck } from "react-icons/fa";
 import { MdOutlineFileUpload } from "react-icons/md";
 import Spinner from "@/components/dashboard/spinner";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function GuidelinesUpload() {
-    const { guidelinesFile, setGuidelinesFile } = useDashboard();
-    const [isLoading, setIsLoading] = useState(false);
+    const { medicalRecord, guidelinesFile, setGuidelinesFile } = useDashboard();
+    const [isUploading, setIsUploading] = useState(false);
 
     useEffect(() => {
-        if (!isLoading) {
+        if (!isUploading) {
             return;
         }
 
         const timeoutId = setTimeout(() => {
-            setIsLoading(false);
+            setIsUploading(false);
             setGuidelinesFile({ url: "/assets/guidelines.pdf" });
         }, 3000);
 
         return () => clearTimeout(timeoutId);
-    }, [isLoading]);
+    }, [isUploading]);
 
     const handleClick = () => {
-        setIsLoading(true);
+        if (medicalRecord == null) {
+            return toast.error("Upload medical record first!")
+        }
+
+        setIsUploading(true);
     }
 
     return(
         <div className="w-full h-64 flex flex-col items-center justify-center gap-4">
             <h2 className="self-start font-medium text-xl">Upload Guidelines</h2>
             <div className="w-full h-full bg-gray-100 rounded-3xl border-4 border-black-500 border-dashed flex flex-row items-center justify-center">
-                {!isLoading && guidelinesFile === null && (
+                {!isUploading && guidelinesFile === null && (
                     <button
                         className="flex flex-col items-center justify-center gap-4 font-medium text-lg"
                         onClick={handleClick}
@@ -43,7 +48,7 @@ export default function GuidelinesUpload() {
                         </span>
                     </button> 
                 )}
-                {isLoading && (
+                {isUploading && (
                     <Spinner />
                 )}
                 {guidelinesFile !== null && (
@@ -58,6 +63,10 @@ export default function GuidelinesUpload() {
                     </span>
                 )}
             </div>
+            <Toaster
+                position="top-center"
+                reverseOrder={false}
+            />
         </div>
     )
 }
