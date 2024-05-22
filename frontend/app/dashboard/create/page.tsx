@@ -13,28 +13,30 @@ export const revalidate = 0;
 export default function CreateRoot() {
 	const { medicalRecord, setMedicalRecord, guidelinesFile, setGuidelinesFile } = useDashboard(); 
 	const router = useRouter();
-	const [caseId, setCaseId] = useState(null);
+	const [caseId, setCaseId] = useState('');
 
-	// const CASE_ID = "case_891a_6fbl_87d1_4326";
+	const CASE_ID = "case_891a_6fbl_87d1_4326";
 
 	const handleContinue = () => {
-		fetch('http://localhost:8000/cases', {
-			method: 'POST'
-		})
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Network response was not ok ' + response.statusText);
-			}
-			return response.json();
-		})
-		.then(data => {
-			console.log('data', data);
-			setCaseId(data.case_id)
-		})
-		.catch(error => {
-			console.error('There was a problem with the fetch operation:', error);
-			toast.error(error.message)
-		});
+		// COMMENT OUT FETCH TO SKIP API REQ
+		// fetch('http://localhost:8000/cases', {
+		// 	method: 'POST'
+		// })
+		// .then(response => {
+		// 	if (!response.ok) {
+		// 		throw new Error('Network response was not ok ' + response.statusText);
+		// 	}
+		// 	return response.json();
+		// })
+		// .then(data => {
+		// 	console.log('data', data);
+		// 	setCaseId(data.case_id)
+		// })
+		// .catch(error => {
+		// 	console.error('There was a problem with the fetch operation:', error);
+		// 	toast.error('Server Error')
+		// });
+		setCaseId(CASE_ID);
 	}
 
 	useEffect(() => {
@@ -42,7 +44,7 @@ export default function CreateRoot() {
 			return;
 		}
 
-		router.push(`/dashboard/case/${caseId}`)
+		router.push(`/dashboard/case/${ caseId }`)
 	}, [caseId])
 
 	const buttonClasses = classNames(
@@ -70,7 +72,7 @@ export default function CreateRoot() {
 				</button>
 			</div>
 			<Toaster
-                position="top-center"
+                position="top-right"
                 reverseOrder={false}
             />
 		</div>

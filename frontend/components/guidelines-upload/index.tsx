@@ -69,7 +69,7 @@ export default function GuidelinesUpload() {
                 )}
             </div>
             <Toaster
-                position="top-center"
+                position="top-right"
                 reverseOrder={false}
             />
         </div>
