@@ -1,11 +1,16 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Annotated
 from enum import Enum
-from datetime import datetime
+from datetime import datetime, timezone
+import models
+from database import engine, SessionLocal
+from sqlalchemy.orm import Session
 
 
 app = FastAPI()
+models.Base.metadata.create_all(bind=engine)
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,43 +20,37 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-class Status(Enum):
-    SUBMITTED="submitted"
-    PROCESSING="processing"
-    COMPLETE="complete"
-    
-class Case(BaseModel):
-    id: str
-    created_at: datetime
-    status: str
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
-id_ = 0
-cases = {
-    # case_{id_}: Case(id="case_{id_}", created_at=datetime.now(), status=Status.SUBMITTED),
-}
+db_dependency = Annotated[Session, Depends(get_db)]
 
 @app.get("/")
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/cases/{case_id}")
-def query_case_by_id(case_id: str):
-    if case_id not in cases:
-        HTTPException(status_code=404, detail=f"Case with {case_id=} does not exist.")
-    
-    return cases[case_id]
-
 @app.get("/cases")
-def get_all_cases() -> dict[str, dict[str, Case]]:
-    return { "cases": cases }
+async def get_all_cases(db: db_dependency):
+    result = db.query(models.Cases).all()
+    return result
+
+@app.get("/cases/{case_id}")
+async def query_case_by_id(case_id: int, db: db_dependency):
+    result = db.query(models.Cases).filter(models.Cases.id == case_id).first()
+    if not result:
+        raise HTTPException(status_code=404, detail=f"Case with {case_id=} does not exist.")
+    
+    return result
 
 @app.post("/cases")
-def create_case() -> dict[str, str]:
-    global id_
-    case_id = f"case_{id_}"
-    cases[case_id] = Case(id = case_id, created_at=datetime.now(), status=Status.SUBMITTED)
-    response = { "case_id": case_id }
-    id_ += 1
-    
-    return response
+async def create_case(db: db_dependency):
+    db_case = models.Cases(created_at=datetime.now(timezone.utc), status=models.Status.SUBMITTED)
+    db.add(db_case)
+    db.commit()
+    db.refresh(db_case)
+    return { "case_id": db_case.id }
     
