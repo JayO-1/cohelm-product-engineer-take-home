@@ -19,6 +19,7 @@ export default function CreateRoot() {
 
 	const handleContinue = () => {
 		// COMMENT OUT FETCH TO SKIP API REQ
+		
 		// fetch('http://localhost:8000/cases', {
 		// 	method: 'POST'
 		// })

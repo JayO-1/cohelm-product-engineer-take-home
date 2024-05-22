@@ -1,8 +1,4 @@
-'use client'
-
 import React from 'react';
-import { useState } from 'react';
-import { MdContentCopy } from 'react-icons/md';
 import data from '@/resources/example-response.json';
 import Header from '@/components/dashboard/case-details/header';
 import StatusBar from '@/components/dashboard/case-details/status-bar';

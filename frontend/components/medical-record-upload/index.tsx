@@ -55,7 +55,7 @@ export default function MedicalRecordUpload() {
                     <span className="flex flex-col justify-center items-center gap-4">
                         <span className="text-green-600 flex flex-row gap-1 items-center">
                             <FaCheck />
-                            <span>Medical Record Uploaded</span>
+                            <span>medical-record.pdf</span>
                         </span>
                         <span className="font-light text-blue-500">
                             Click to change file
