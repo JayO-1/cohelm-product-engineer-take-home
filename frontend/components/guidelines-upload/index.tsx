@@ -39,10 +39,10 @@ export default function GuidelinesUpload() {
             <div className="w-full h-full bg-gray-100 rounded-3xl border-4 border-black-500 border-dashed flex flex-row items-center justify-center">
                 {!isUploading && guidelinesFile === null && (
                     <button
-                        className="flex flex-col items-center justify-center gap-4 font-medium text-lg"
+                        className="flex flex-col items-center justify-center font-medium text-lg"
                         onClick={handleClick}
                     >
-                        <MdOutlineFileUpload className="text-5xl text-blue-500" />
+                        <MdOutlineFileUpload className="text-5xl text-blue-500 animate-bounce" />
                         <span className="font-light">
                             Drag and drop or <span className="text-blue-500">browse</span> your files 
                         </span>
