@@ -11,21 +11,13 @@ export default function MedicalRecordUpload() {
     const { medicalRecord, setMedicalRecord } = useDashboard();
     const [isUploading, setIsUploading] = useState(false);
 
-    useEffect(() => {
-        if (!isUploading) {
-            return;
-        }
+    const handleClick = () => {
+        setIsUploading(true);
 
-        const timeoutId = setTimeout(() => {
+        setTimeout(() => {
             setIsUploading(false);
             setMedicalRecord({ url: "/assets/medical-record.pdf" });
         }, 3000);
-
-        return () => clearTimeout(timeoutId);
-    }, [isUploading]);
-
-    const handleClick = () => {
-        setIsUploading(true);
     }
 
     return(

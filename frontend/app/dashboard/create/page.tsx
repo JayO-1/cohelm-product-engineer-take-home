@@ -4,21 +4,19 @@ import GuidelinesUpload from "@/components/guidelines-upload";
 import MedicalRecordUpload from "@/components/medical-record-upload";
 import { useDashboard } from "@/context/dashboard-context";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from 'react';
 import classNames from "classnames";
 import toast, { Toaster } from 'react-hot-toast';
 
 export const revalidate = 0;
 
 export default function CreateRoot() {
-	const { medicalRecord, setMedicalRecord, guidelinesFile, setGuidelinesFile } = useDashboard(); 
+	const { medicalRecord, guidelinesFile } = useDashboard(); 
 	const router = useRouter();
-	const [caseId, setCaseId] = useState('');
 
 	const CASE_ID = "case_891a_6fbl_87d1_4326";
 
 	const handleContinue = () => {
-		// COMMENT OUT FETCH TO SKIP API REQ
+		// UNCOMMENT TO PERFORM FETCH REQUEST
 		
 		// fetch('http://localhost:8000/cases', {
 		// 	method: 'POST'
@@ -31,22 +29,17 @@ export default function CreateRoot() {
 		// })
 		// .then(data => {
 		// 	console.log('data', data);
-		// 	setCaseId(data.case_id)
+		// 	router.push(`/dashboard/case/${ data.case_id }`)
 		// })
 		// .catch(error => {
 		// 	console.error('There was a problem with the fetch operation:', error);
 		// 	toast.error('Server Error')
 		// });
-		setCaseId(CASE_ID);
+
+		// COMMENT OUT TO PERFORM FETCH REQUEST
+
+		router.push(`/dashboard/case/${ CASE_ID }`)
 	}
-
-	useEffect(() => {
-		if (!caseId) {
-			return;
-		}
-
-		router.push(`/dashboard/case/${ caseId }`)
-	}, [caseId])
 
 	const buttonClasses = classNames(
 		'w-full py-2 px-4 rounded font-medium',

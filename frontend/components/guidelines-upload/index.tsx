@@ -12,25 +12,17 @@ export default function GuidelinesUpload() {
     const { medicalRecord, guidelinesFile, setGuidelinesFile } = useDashboard();
     const [isUploading, setIsUploading] = useState(false);
 
-    useEffect(() => {
-        if (!isUploading) {
-            return;
-        }
-
-        const timeoutId = setTimeout(() => {
-            setIsUploading(false);
-            setGuidelinesFile({ url: "/assets/guidelines.pdf" });
-        }, 3000);
-
-        return () => clearTimeout(timeoutId);
-    }, [isUploading]);
-
     const handleClick = () => {
         if (medicalRecord == null) {
             return toast.error("Upload medical record first!")
         }
 
         setIsUploading(true);
+        
+        setTimeout(() => {
+            setIsUploading(false);
+            setGuidelinesFile({ url: "/assets/guidelines.pdf" });
+        }, 3000);
     }
 
     return(

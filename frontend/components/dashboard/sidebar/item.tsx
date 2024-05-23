@@ -32,6 +32,7 @@ const SidebarItem = ({ item }: { item: ISidebarItem }) => {
 
     return router.push(path);
   };
+  
   const isActive = useMemo(() => {
     if (items && items.length > 0) {
       if (items.find((item) => item.path === pathname)) {

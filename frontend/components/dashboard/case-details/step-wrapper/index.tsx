@@ -5,7 +5,7 @@ export default function StepWrapper({ steps }) {
         <div className="flex flex-col items-center gap-4 mb-12">
             {
                 steps.map((step) => {
-                    return <Step />
+                    return <Step key={step.key} />
                 })
             }
         </div>
