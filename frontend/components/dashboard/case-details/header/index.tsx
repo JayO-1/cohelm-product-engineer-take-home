@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react';
 import { MdContentCopy } from 'react-icons/md'; 
 import toast, { Toaster } from 'react-hot-toast';
 
