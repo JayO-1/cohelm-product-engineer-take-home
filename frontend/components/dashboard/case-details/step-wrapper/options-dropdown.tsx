@@ -20,7 +20,7 @@ export default function OptionsDropdown({ isMet, options, selectedOptions }) {
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2">
                     <span>
-                        { isMet ? (<MdCheckCircle className="text-2xl text-green-500" />) : (<MdCancel className="text-lg text-red-500" />) }
+                        { isMet ? (<MdCheckCircle className="text-2xl text-green-500" />) : (<MdCancel className="text-2xl text-red-500" />) }
                     </span>
                     <div className={ `flex flex-col gap-2 ${ isMet ? 'text-green-500' : 'text-red-500' }` }>
                         <span className="font-bold text-sm">Selected Options</span>
@@ -38,17 +38,9 @@ export default function OptionsDropdown({ isMet, options, selectedOptions }) {
                     {showOptions && (
                         <div className={`w-full text-xs ${ isMet ? 'text-green-500' : 'text-red-500' }`}>
                             {options.map((option) => {
-                                if (option.selected) {
-                                    return (
-                                        <label className="flex items-center ">
-                                            <input type="checkbox" checked />
-                                            <span className="ml-2">{ `(${ option.key }) ${ option.text }` }</span>
-                                        </label>
-                                    )
-                                }
                                 return (
-                                    <label className="flex items-center">
-                                        <input type="checkbox" className="" />
+                                    <label className="flex items-center ">
+                                        <input type="checkbox" readOnly={true} checked={option.selected} />
                                         <span className="ml-2">{ `(${ option.key }) ${ option.text }` }</span>
                                     </label>
                                 )

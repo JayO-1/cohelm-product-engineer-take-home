@@ -16,6 +16,8 @@ export default function Step({ step }) {
     const options = step.options;
     const reasoning = step.reasoning;
     const evidence = step.evidence;
+    const nextStep = step.next_step;
+    const logic = step.logic;
 
     const selectedOptions = options.filter(option => option.selected === true);
     const selectedOptionKeys = selectedOptions.map(selectedOption => selectedOption.key);
@@ -51,7 +53,7 @@ export default function Step({ step }) {
 
                 <div className="flex flex-col gap-2">
                     <EvidenceDropdown evidence={ evidence } />
-                    <NextStepCard evidence={evidence} />
+                    { isFinal ? null : <NextStepCard selectedOptionKeys={ selectedOptionKeys } nextStep={ nextStep } logic={ logic } /> }
                 </div>
             </div>
         </div>

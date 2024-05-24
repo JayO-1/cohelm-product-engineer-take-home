@@ -1,70 +1,34 @@
 import { useState } from 'react';
-import { MdLightbulbCircle, MdExpandLess, MdExpandMore } from 'react-icons/md';
+import { MdOutlineArrowCircleRight, MdExpandLess, MdExpandMore } from 'react-icons/md';
 
-export default function NextStepCard({ evidence }) {
-    const [showOptions, setShowOptions] = useState(false);
-
-    function handleShowOptions() {
-        setShowOptions(!showOptions);
-    }
-
+export default function NextStepCard({ selectedOptionKeys, nextStep, logic }) {
     return (
-        <div className="w-full rounded-lg px-2 py-2 bg-gray-100">
+        <div className="w-full rounded-lg px-2 py-2 bg-blue-100">
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-4">
-                    <MdLightbulbCircle className="text-2xl text-yellow-400" />
-                    <div className="flex flex-col gap-2">
-                        <h4 className="text-sm font-semibold">This decision was made based on citations from the medical record</h4>
-                        <button
-                            className="flex items-center text-xs font-semibold focus:outline-none"
-                            onClick={ handleShowOptions }
-                        >
-                            { showOptions ? 'Hide evidence' : 'Show evidence' }
-                            { showOptions ? <MdExpandLess className="ml-2" /> : <MdExpandMore className="ml-2" /> }
-                        </button>
+                    <MdOutlineArrowCircleRight className="text-2xl text-blue-500 animate-pulse" />
+                    <div className="w-full flex flex-col gap-2">
+                        {(
+                            <>
+                                <h4 className="text-sm font-semibold">{ `Since ${ selectedOptionKeys.length === 1 ? 'option ' : 'options ' } 
+                                ${ selectedOptionKeys.join(', ') } ${ selectedOptionKeys.length === 1 ? 'was' : 'were' } selected, the next step is question ${ nextStep }` }</h4>   
+                            </>
+                        )}
+                        {
+                            logic.length !== 0 && (
+                            <span className="relative text-xs font-light">
+                                <u className="peer cursor-pointer">See why</u>
+                                <div className="absolute p-4 ml-2 left-10 top-0 bg-white border border-black rounded-lg flex flex-col items-start justify-center opacity-0 peer-hover:opacity-100 transition-opacity duration-300 z-10 shadow-lg">
+                                    {logic.map((logicOption, index) => (
+                                        <label key={index} className="flex items-center mb-2">
+                                            <input type="checkbox" checked={logicOption.selected} readOnly={true} className="mr-2" />
+                                            <span className="font-semibold">{logicOption.text}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </span>
+                        )}
                     </div>
-                </div>
-                <div className="w-full">
-                    {showOptions && (
-                        <div className="pb-6 px-8"> 
-                            <table className="border border-separate border-tools-table-outline border-gray-200 border-1 rounded-lg divide-y divide-gray-300">
-                                <thead className="rounded-t-large bg-gray-200">
-                                    <th className="rounded-tl-lg px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase">
-                                        Page Number
-                                    </th>
-                                    <th className="rounded-tr-lg px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                                        Content
-                                    </th>
-                                </thead>
-                                <tbody className="rounded-b-lg bg-white divide-y divide-gray-400">
-                                    {evidence.map((evidenceItem, index) => {
-                                        if (index !== evidence.length - 1) {
-                                            return (
-                                                <tr key={index}>
-                                                    <td className="flex justify-center items-center text-xs font-medium text-gray-900 px-6 py-4">
-                                                        <span className="flex items-center justify-center w-12 h-8 rounded-full bg-gray-100">{ evidenceItem.page_number }</span>
-                                                    </td>
-                                                    <td className="text-xs text-gray-500 px-6 py-4">
-                                                        { evidenceItem.content }
-                                                    </td>
-                                                </tr>
-                                            );
-                                        }
-                                        return (
-                                            <tr key={index}>
-                                                <td className="flex justify-center items-center text-xs font-medium text-gray-900 text-center px-6 py-4">
-                                                    <span className="flex items-center justify-center w-12 h-8 rounded-full bg-gray-100">{ evidenceItem.page_number }</span>
-                                                </td>
-                                                <td className="rounded-br-lg text-xs text-gray-500 px-6 py-4">
-                                                    { evidenceItem.content }
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
                 </div>
             </div>
         </div>
