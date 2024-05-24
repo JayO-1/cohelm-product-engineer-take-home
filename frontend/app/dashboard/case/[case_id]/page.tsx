@@ -11,16 +11,23 @@ export default function CaseResult() {
 	const isMet = data.is_met;
 	const steps = data.steps;
 	const cptCodes = data.cpt_codes;
+	const summary = data.summary;
 
 	return (
-		<div className="w-full flex flex-col items-center gap-5 h-screen py-10">
-			<div className="w-[75%] flex flex-col justify-center">
-				<Header procedureName={ procedureName } caseId={caseId} isMet={isMet} />
-
-				<div className="w-full flex flex-col justify-center gap-6 mt-4">
+		<div className="w-full h-screen flex flex-col items-center gap-5 py-10">
+			<div className="w-[75%] flex flex-col justify-center items-center gap-4">
+				<div className="w-[75%] flex flex-col gap-2">
+					<Header procedureName={ procedureName } caseId={caseId} isMet={isMet} />
 					<StatusBar steps={steps} cptCodes={ cptCodes } />
-					<Summary />
-					<StepWrapper steps={steps} />
+				</div>
+				<div>
+					<div className="w-full flex flex-col items-center">
+						<Summary isMet={isMet} summary={ summary } />
+					</div>
+
+					<div>
+						<StepWrapper steps={steps} />
+					</div>
 				</div>
 			</div>
 		</div>

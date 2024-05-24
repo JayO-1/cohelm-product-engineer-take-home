@@ -31,7 +31,7 @@ export default function StatusBar({ steps, cptCodes }) {
             </div>
             <div className="flex flex-col justify-center">
                 <span className="text-sm font-light text-gray-500">CPT Codes</span>
-                <div className="flex justify-evenly items-center gap-2 text-xs">
+                <div className="flex flex-wrap justify-evenly items-center gap-2 text-xs">
                     {
                         cptCodes.map((cptCode) => {
                             return (

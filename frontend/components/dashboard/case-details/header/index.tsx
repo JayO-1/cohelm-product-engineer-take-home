@@ -16,7 +16,7 @@ export default function Header({ procedureName, caseId, isMet }) {
 	  };
 
     return (
-        <>
+        <div>
             <div className="flex items-center gap-6">
                 <h1 className="text-3xl font-bold text-gray-800 overflow-hidden">{ procedureName }</h1>
                 <span className={`inline-block px-2 py-1 text-sm font-bold ${ isMet ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'} rounded-full`}>{ isMet ? 'Approved' : 'Probable Denial' }</span>
@@ -31,6 +31,6 @@ export default function Header({ procedureName, caseId, isMet }) {
                 position="top-right"
                 reverseOrder={false}
             />
-        </>
+        </div>
     )
 }
