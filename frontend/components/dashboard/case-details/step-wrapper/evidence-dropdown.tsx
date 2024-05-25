@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react';
 import { MdLightbulbCircle, MdExpandLess, MdExpandMore } from 'react-icons/md';
 

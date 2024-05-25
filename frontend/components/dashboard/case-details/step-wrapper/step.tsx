@@ -1,14 +1,9 @@
-'use client'
-
-import { useState } from 'react';
 import Markdown from 'react-markdown';
 import OptionsDropdown from './options-dropdown';
 import EvidenceDropdown from './evidence-dropdown';
 import NextStepCard from './next-step-card';
 
-export default function Step({ step }) {
-    const [showMore, setShowMore] = useState(false);
-    
+export default function Step({ step }) {    
     const key = Number(step.key);
     const isMet = step.is_met;
     const isFinal = step.is_final;
@@ -21,10 +16,6 @@ export default function Step({ step }) {
 
     const selectedOptions = options.filter(option => option.selected === true);
     const selectedOptionKeys = selectedOptions.map(selectedOption => selectedOption.key);
-
-    function handleClick() {
-        setShowMore(!showMore);
-    }
 
     return (
         <div className="w-[75%] border border-grey-200 bg-white shadow-md rounded-lg p-5">
@@ -53,7 +44,7 @@ export default function Step({ step }) {
 
                 <div className="flex flex-col gap-2">
                     <EvidenceDropdown evidence={ evidence } />
-                    <NextStepCard selectedOptionKeys={ selectedOptionKeys } nextStep={ nextStep } logic={ logic } isMet={ isMet } isFinal={ isFinal } />
+                    <NextStepCard selectedOptionKeys={ selectedOptionKeys } nextStep={ nextStep } logic={ logic } isFinal={ isFinal } />
                 </div>
             </div>
         </div>

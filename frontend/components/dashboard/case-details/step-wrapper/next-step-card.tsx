@@ -1,6 +1,6 @@
 import { MdOutlineArrowCircleRight } from 'react-icons/md';
 
-export default function NextStepCard({ selectedOptionKeys, nextStep, logic, isMet, isFinal }) {
+export default function NextStepCard({ selectedOptionKeys, nextStep, logic, isFinal }) {
     return (
         <div className="w-full rounded-lg px-2 py-2 bg-blue-100">
             <div className="flex flex-col gap-2">

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react';
 import { MdExpandMore, MdExpandLess, MdCheckCircle, MdCancel } from 'react-icons/md';
 

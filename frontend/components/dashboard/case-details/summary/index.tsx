@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect } from 'react';
 import Markdown from 'react-markdown';
 
 export default function Summary( { isMet, summary }) {
