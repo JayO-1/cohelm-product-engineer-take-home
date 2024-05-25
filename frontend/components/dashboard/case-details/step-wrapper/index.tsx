@@ -1,5 +1,4 @@
 import Step from './step';
-import { MdTroubleshoot } from 'react-icons/md';
 
 export default function StepWrapper({ steps }) {
     return (

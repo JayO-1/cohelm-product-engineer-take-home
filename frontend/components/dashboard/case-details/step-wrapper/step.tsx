@@ -22,7 +22,7 @@ export default function Step({ step }) {
         <div className="relative w-[75%]">
             <MdTroubleshoot className="absolute -left-12 top-5 text-3xl text-white bg-gray-600 rounded-full" />
             <div className="w-full border border-grey-200 bg-white shadow-md rounded-lg p-5">
-                <h3 className="text-sm font-light text-gray-400">{ key === 0 ? 'Instructions' : `Question ${ key }`}</h3>
+                <h3 id={ key } className="text-sm font-light text-gray-400">{ key === 0 ? 'Instructions' : `Question ${ key }`}</h3>
                 <h4 className="text-lg font-semibold text-gray-800">{ question }</h4>
 
                 <OptionsDropdown isMet={ isMet } options={ options } selectedOptions={ selectedOptions } />

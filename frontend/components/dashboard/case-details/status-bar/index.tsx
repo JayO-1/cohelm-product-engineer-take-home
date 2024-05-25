@@ -1,3 +1,6 @@
+'use client'
+
+import Link from 'next/link';
 import { MdCheck, MdClose, MdArrowForward } from 'react-icons/md';
 
 export default function StatusBar({ steps, cptCodes }) {
@@ -14,16 +17,20 @@ export default function StatusBar({ steps, cptCodes }) {
                         steps.map((step, index) => {
                             if (index !== steps.length - 1) {
                                 return (
-                                    <span key={step.key} className="flex items-center">
-                                        { step.is_met ? <MdCheck className="text-green-600 text-2xl" /> : <MdClose className="text-red-600 text-2xl" /> }
-                                        <MdArrowForward className="text-xs" />
-                                    </span>
+                                    <Link href={`#${ step.key }`}>
+                                        <span key={step.key} className="flex items-center">
+                                            { step.is_met ? <MdCheck className="text-green-600 text-2xl" /> : <MdClose className="text-red-600 text-2xl" /> }
+                                            <MdArrowForward className="text-xs" />
+                                        </span>
+                                    </Link>
                                 );
                             }
                             return (
-                                <span key={step.key}>
-                                    { step.is_met ? <MdCheck className="text-green-600 text-2xl" /> : <MdClose className="text-red-600 text-2xl" /> }
-                                </span>
+                                <Link href={`#${ step.key }`}>
+                                    <span key={step.key}>
+                                        { step.is_met ? <MdCheck className="text-green-600 text-2xl" /> : <MdClose className="text-red-600 text-2xl" /> }
+                                    </span>
+                                </Link>
                             );
                         })
                     }
