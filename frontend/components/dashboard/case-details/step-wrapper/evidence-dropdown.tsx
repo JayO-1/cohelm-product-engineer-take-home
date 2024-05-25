@@ -40,24 +40,12 @@ export default function EvidenceDropdown({ evidence }) {
                                 </thead>
                                 <tbody className="rounded-b-lg bg-white divide-y divide-gray-400">
                                     {evidence.map((evidenceItem, index) => {
-                                        if (index !== evidence.length - 1) {
-                                            return (
-                                                <tr key={index}>
-                                                    <td className="flex justify-center items-center text-xs font-medium text-gray-900 px-6 py-4">
-                                                        <span className="flex items-center justify-center w-12 h-8 rounded-full bg-gray-100">{ evidenceItem.page_number }</span>
-                                                    </td>
-                                                    <td className="text-xs text-gray-500 px-6 py-4">
-                                                        { evidenceItem.content }
-                                                    </td>
-                                                </tr>
-                                            );
-                                        }
                                         return (
                                             <tr key={index}>
-                                                <td className="flex justify-center items-center text-xs font-medium text-gray-900 text-center px-6 py-4">
+                                                <td className={`${ index == evidence.length - 1 && 'rounded-bl-lg' } flex justify-center items-center text-xs font-medium text-gray-900 text-center px-6 py-4`}>
                                                     <span className="flex items-center justify-center w-12 h-8 rounded-full bg-gray-100">{ evidenceItem.page_number }</span>
                                                 </td>
-                                                <td className="rounded-br-lg text-xs text-gray-500 px-6 py-4">
+                                                <td className={`${ index == evidence.length - 1 && 'rounded-br-lg' } text-xs text-gray-500 px-6 py-4`}>
                                                     { evidenceItem.content }
                                                 </td>
                                             </tr>
