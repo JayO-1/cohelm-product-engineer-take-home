@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from "@/components/dashboard/button";
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function DashboardRoot() {
 	return (
@@ -19,9 +20,9 @@ export default function DashboardRoot() {
 						<strong>No prior auth records found</strong> <br />
 						<i>You can create a new prior auth record by clicking 'Create Record'</i>
 					</p>
-					<Button href="/dashboard/create" color="blue">
+					<Link href="/dashboard/create" className="px-4 py-2 bg-gradient-to-tr from-blue-600 to-blue-400 rounded-full text-white shadow-lg">
 						Create Record
-					</Button>
+					</Link>
 				</div>
 			</div>
 		</div>
