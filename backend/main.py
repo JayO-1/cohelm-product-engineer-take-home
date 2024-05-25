@@ -55,6 +55,7 @@ async def update_status(db: db_dependency, case_id: int):
 
     await asyncio.sleep(20)
     
+    case = db.query(models.Cases).filter(models.Cases.id == case_id).first()
     if case:
         case.status = models.Status.COMPLETE
         db.commit()
