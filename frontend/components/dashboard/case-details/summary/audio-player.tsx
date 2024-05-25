@@ -5,8 +5,13 @@ import { MdVolumeUp, MdVolumeOff } from 'react-icons/md';
 
 export default function AudioPlayer({ isMet, summary }) {
     const [isSpeaking, setIsSpeaking] = useState(false);
-    const synthesis = window.speechSynthesis;
+    
     let utterance;
+    let synthesis;
+
+    if (typeof window !== 'undefined') {
+        synthesis = window.speechSynthesis;
+    }
 
     const toggleSpeech = () => {
         if (isSpeaking) {

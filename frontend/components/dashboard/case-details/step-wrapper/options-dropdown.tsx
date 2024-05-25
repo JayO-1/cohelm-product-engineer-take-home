@@ -41,7 +41,7 @@ export default function OptionsDropdown({ isMet, options, selectedOptions }) {
                         <div className={`w-full text-xs ${ isMet ? 'text-green-500' : 'text-red-500' }`}>
                             {options.map((option) => {
                                 return (
-                                    <label className="flex items-center ">
+                                    <label key={ option.key } className="flex items-center ">
                                         <input type="checkbox" readOnly={true} checked={option.selected} />
                                         <span className="ml-2">{ `(${ option.key }) ${ option.text }` }</span>
                                     </label>
