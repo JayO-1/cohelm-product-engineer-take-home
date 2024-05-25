@@ -43,7 +43,7 @@ export default function EvidenceDropdown({ evidence }) {
                                         return (
                                             <tr key={index}>
                                                 <td className={`${ index == evidence.length - 1 && 'rounded-bl-lg' } flex justify-center items-center text-xs font-medium text-gray-900 text-center px-6 py-4`}>
-                                                    <span className="flex items-center justify-center w-12 h-8 rounded-full bg-gray-100">{ evidenceItem.page_number }</span>
+                                                    <a target="_blank" href={ `/medical-record.pdf#page=${ evidenceItem.page_number }` }><span className="flex items-center justify-center w-12 h-8 rounded-full bg-gray-100">{ evidenceItem.page_number }</span></a>
                                                 </td>
                                                 <td className={`${ index == evidence.length - 1 && 'rounded-br-lg' } text-xs text-gray-500 px-6 py-4`}>
                                                     { evidenceItem.content }
