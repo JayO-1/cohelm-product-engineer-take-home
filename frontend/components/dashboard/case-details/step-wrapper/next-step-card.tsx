@@ -1,14 +1,18 @@
-import { useState } from 'react';
-import { MdOutlineArrowCircleRight, MdExpandLess, MdExpandMore } from 'react-icons/md';
+import { MdOutlineArrowCircleRight } from 'react-icons/md';
 
-export default function NextStepCard({ selectedOptionKeys, nextStep, logic }) {
+export default function NextStepCard({ selectedOptionKeys, nextStep, logic, isMet, isFinal }) {
     return (
         <div className="w-full rounded-lg px-2 py-2 bg-blue-100">
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-4">
                     <MdOutlineArrowCircleRight className="text-2xl text-blue-500 animate-pulse" />
                     <div className="w-full flex flex-col gap-2">
-                        {(
+                        {isFinal ? (
+                            <>
+                                <h4 className="text-sm font-semibold">{ `Since ${ selectedOptionKeys.length === 1 ? 'option ' : 'options ' } 
+                                ${ selectedOptionKeys.join(', ') } ${ selectedOptionKeys.length === 1 ? 'was' : 'were' } selected, the outcome is ${ nextStep }` }</h4>
+                            </>
+                        ) : (
                             <>
                                 <h4 className="text-sm font-semibold">{ `Since ${ selectedOptionKeys.length === 1 ? 'option ' : 'options ' } 
                                 ${ selectedOptionKeys.join(', ') } ${ selectedOptionKeys.length === 1 ? 'was' : 'were' } selected, the next step is question ${ nextStep }` }</h4>   

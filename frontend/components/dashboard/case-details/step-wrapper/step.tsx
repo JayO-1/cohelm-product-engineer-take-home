@@ -53,7 +53,7 @@ export default function Step({ step }) {
 
                 <div className="flex flex-col gap-2">
                     <EvidenceDropdown evidence={ evidence } />
-                    { isFinal ? null : <NextStepCard selectedOptionKeys={ selectedOptionKeys } nextStep={ nextStep } logic={ logic } /> }
+                    <NextStepCard selectedOptionKeys={ selectedOptionKeys } nextStep={ nextStep } logic={ logic } isMet={ isMet } isFinal={ isFinal } />
                 </div>
             </div>
         </div>

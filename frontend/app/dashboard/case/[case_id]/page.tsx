@@ -20,12 +20,12 @@ export default function CaseResult() {
 					<Header procedureName={ procedureName } caseId={caseId} isMet={isMet} />
 					<StatusBar steps={steps} cptCodes={ cptCodes } />
 				</div>
-				<div>
+				<div className="w-full">
 					<div className="w-full flex flex-col items-center">
 						<Summary isMet={isMet} summary={ summary } />
 					</div>
 
-					<div>
+					<div className="w-full">
 						<StepWrapper steps={steps} />
 					</div>
 				</div>

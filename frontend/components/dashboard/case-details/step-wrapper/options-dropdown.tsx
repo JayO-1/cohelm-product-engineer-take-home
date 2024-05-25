@@ -34,7 +34,7 @@ export default function OptionsDropdown({ isMet, options, selectedOptions }) {
                         </button>
                     </div>
                 </div>
-                <div className="ml-7">
+                <div className="ml-8">
                     {showOptions && (
                         <div className={`w-full text-xs ${ isMet ? 'text-green-500' : 'text-red-500' }`}>
                             {options.map((option) => {
