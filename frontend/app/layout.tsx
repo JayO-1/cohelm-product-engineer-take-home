@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import { NextUIProvider } from "@nextui-org/react";
 
 interface IRootLayoutProps {
 	children: React.ReactNode;
@@ -12,10 +11,8 @@ export default function RootLayout(props: IRootLayoutProps) {
 		<html lang="en">
 			<head></head>
 			<body>
-				<NextUIProvider>
-					{children}
-					<div id="modal" />
-				</NextUIProvider>
+				{children}
+				<div id="modal" />
 			</body>
 		</html>
 	)
