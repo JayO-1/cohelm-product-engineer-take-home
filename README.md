@@ -95,6 +95,6 @@ uvicorn main:app --reload
 4. Under `/cohelm-product-engineer-take-home/frontend/app/dashboard/create/page.tsx`, comment/uncomment the appropriate lines of code to perform the fetch request to the backend. You may need to update the port number if it is different to what's used
 
 5. Follow the steps to run the front-end. Upon clicking continue on the file upload page (found after clicking 'Create Record' on the dashboard page), you should see a POST request is received by the server
-    * Alternatively, you could use Swagger to query the backend in isolation. The swagger endpoint can be found at `localhost:8000` by default
+    * Alternatively, you could use Swagger to query the backend in isolation. The swagger endpoint can be found at `localhost:8000/docs` by default
 
 6. Use PgAdmin to confirm that the DB is written to e.g. run `SELECT * FROM cases`
